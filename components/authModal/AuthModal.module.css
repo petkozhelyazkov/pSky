@@ -1,0 +1,46 @@
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: fit-content;
+    margin: 0 auto;
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
+    border: white;
+    border-width: 1px;
+    margin-top: 60px;
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.buttonsSpan {
+    font-size: 10px;
+    text-transform: capitalize;
+    margin-right: 5px;
+}
+
+.googleButton {
+    background-color: rgb(234, 66, 53);
+}
+
+.googleButton:hover {
+    background-color: rgb(207, 54, 43);
+}
+
+.wrapper {
+    display: flex;
+}
+
+.forgottenPassword {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.center {
+    margin: 0 auto;
+}

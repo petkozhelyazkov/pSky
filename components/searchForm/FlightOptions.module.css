@@ -1,0 +1,36 @@
+.flightOptions {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.topArrow {
+    width: 15px;
+    height: 15px;
+    float: left;
+    clear: both;
+
+}
+
+.arrows {
+    padding-top: 5px;
+}
+
+.arrow {
+    display: flex;
+    padding-top: 0px;
+    align-items: center;
+}
+
+.bottomArrow {
+    width: 15px;
+    height: 15px;
+    float: left;
+    clear: both;
+}
+
+.removeFlight {
+    display: flex;
+    width: 0px;
+    margin-left: -5px;
+}

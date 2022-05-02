@@ -1,0 +1,53 @@
+.menuItemWrapper {
+    width: 180px;
+    padding: 5px 5px 0px 5px;
+    border-bottom: 00.3px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-style: solid;
+    border-color: darkgray;
+}
+
+.descriptionWrapper {
+    line-height: 3px;
+    float: left;
+}
+
+.itemName {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.itemDescription {
+    font-size: 11px;
+    color: gray;
+}
+
+.passengersLabel {
+    font-size: 15px;
+}
+
+.passengerCounter {
+    display: flex;
+    float: right;
+    gap: 10px;
+}
+
+.passengerSubtractButton {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(31, 181, 241);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+}
+
+.passengerAddButton {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(31, 181, 241);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: white;
+}

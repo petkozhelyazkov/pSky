@@ -1,0 +1,40 @@
+.navigation {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 60px;
+    list-style: none;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.link:hover {
+    color: lightblue;
+}
+
+.logoLink {
+    margin-right: 300px;
+    color: white;
+}
+
+.loginLink {
+    margin-left: 300px;
+    display: flex;
+}
+
+.loginIcon {
+    margin-top: 5px;
+    margin-right: 3px;
+    color: white;
+}

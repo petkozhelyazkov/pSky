@@ -1,0 +1,34 @@
+.wrapper {
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.lineTop {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 340px;
+}
+
+.line {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.button div {
+    height: 30px;
+    color: white;
+}
+
+.button {
+    height: 39px;
+    background-color: rgb(215, 26, 95);
+    border-radius: 3px;
+}
+
+.passengersLabel {
+    font-size: 15px;
+}
