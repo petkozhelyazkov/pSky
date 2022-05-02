@@ -1,15 +1,16 @@
 import styles from './SearchAutocomplete.module.css';
 import { FormGroup } from 'react-bootstrap';
 import { TextField, Autocomplete } from '@mui/material';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { SearchFormContext } from '../../contexts/searchFormState';
+import { useLazyEffect } from '../../hooks';
 
 export default function SearchAutocomplete({
     label,
     type,
     index,
 }) {
-    const { flightCriteria, flightCriteriaReducer } = useContext(SearchFormContext);
+    const { flightCriteria, flightCriteriaReducer, formValidation, formValidationReducer } = useContext(SearchFormContext);
     const [defaultValue, setDefaultValue] = useState(
         flightCriteria.flights[index]
             ? flightCriteria.flights[index][`${type}AutocompleteValue`]
@@ -20,6 +21,19 @@ export default function SearchAutocomplete({
         msg: 'Моля попълнете полето!'
     });
     const [destinations, setDestinations] = useState(['']);
+    const [value, setValue] = useState('');
+
+
+    useLazyEffect(() => {
+        if (!value) {
+            setError({ ...error, isError: true });
+            formValidationReducer({ index, type, isTrue: false }, 'FORM_COMPONENT');
+        } else {
+            setError({ ...error, isError: false });
+            formValidationReducer({ index, type, isTrue: true }, 'FORM_COMPONENT');
+        }
+    }, [formValidation.isSent]);
+
 
     const autocompleteTimeout = 300;
     let autocompleteTimeoutHandle = 0;
@@ -59,6 +73,7 @@ export default function SearchAutocomplete({
         }
 
         flightCriteriaReducer(newFlights, 'FLIGHTS');
+        setValue(value);
     }
 
     return (

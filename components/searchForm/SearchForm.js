@@ -10,15 +10,20 @@ import { Button } from '@mui/material';
 
 
 export default function SearchForm() {
-    const { flightCriteria } = useContext(SearchFormContext);
+    const { flightCriteria, formValidationReducer, formValidation } = useContext(SearchFormContext);
 
     useEffect(() => {
-        console.log(flightCriteria);
-    }, [flightCriteria])
+        console.log(formValidation.formComponents);
+    }, [flightCriteria, formValidation])
 
     function onFormSubmit(e) {
         e.preventDefault();
+        formValidationReducer(true, 'IS_SENT');
     }
+
+    useEffect(() => {
+        formValidationReducer(false, 'IS_SENT');
+    }, [formValidation.isSent])
 
     return (
         <form onSubmit={onFormSubmit}>

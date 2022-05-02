@@ -14,7 +14,6 @@ import { useLazyEffect } from '../../hooks';
 export default function FightOptions() {
     const { flightCriteria, flightCriteriaReducer } = useContext(SearchFormContext);
     const [flights, setFlights] = useState(flightCriteria.flights);
-    const type = flightCriteria.type;
 
     useLazyEffect(() => {
         setFlights(flightCriteria.flights);
@@ -40,7 +39,7 @@ export default function FightOptions() {
             {flights.map((x, i) =>
                 <div className={styles.flightOptions} key={i}>
                     <SearchAutocomplete index={i} type='originLocationCode' label='От:' />
-                    {type == 'twoway'
+                    {flightCriteria.type == 'twoway'
                         ?
                         <div className={styles.arrows}>
                             <ArrowForwardIcon className={styles.topArrow} />
@@ -53,7 +52,7 @@ export default function FightOptions() {
                     }
                     <SearchAutocomplete index={i} type='originDestinationCode' label='До:' />
                     <FlightDatePicker index={i} flightType='twoway' label='Отиване:' type='goingDate' />
-                    <FlightDatePicker index={i} flightType={type} label='Връщане:' type='comingDate' />
+                    <FlightDatePicker index={i} flightType={flightCriteria.type} label='Връщане:' type='comingDate' />
                     {i > 1 &&
                         <div className={styles.removeFlight}>
                             <Button onClick={onRemoveFlight(i)}>

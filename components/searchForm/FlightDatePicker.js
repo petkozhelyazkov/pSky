@@ -12,7 +12,7 @@ export default function FlightDatePicker({
     type,
     index
 }) {
-    const { flightCriteria, flightCriteriaReducer } = useContext(SearchFormContext);
+    const { flightCriteria, flightCriteriaReducer, formValidation, formValidationReducer } = useContext(SearchFormContext);
     const [date, setDate] = useState(
         flightCriteria.flights[index]
             ? flightCriteria.flights[index][type]
@@ -22,6 +22,18 @@ export default function FlightDatePicker({
         isError: false,
         msg: 'Моля попълнете полето!'
     });
+    const [value, setValue] = useState('');
+
+    useLazyEffect(() => {
+        if (!value) {
+            setError({ ...error, isError: true });
+            formValidationReducer({ index, type, isTrue: false }, 'FORM_COMPONENT');
+        } else {
+            setError({ ...error, isError: false });
+            formValidationReducer({ index, type, isTrue: true }, 'FORM_COMPONENT');
+        }
+    }, [formValidation.isSent]);
+
 
     function onDateChange(value) {
         let newFlights = [...flightCriteria.flights];
@@ -38,7 +50,8 @@ export default function FlightDatePicker({
             newFlights[index][type] = isoDate;
         }
 
-        flightCriteriaReducer(newFlights, 'FLIGHTS')
+        flightCriteriaReducer(newFlights, 'FLIGHTS');
+        setValue(value);
     }
 
     return (

@@ -16,6 +16,29 @@ export const SearchFormState = ({ children }) => {
             {}
         ]
     });
+    const [formValidation, setFormValidation] = useState({
+        isSent: false,
+        formComponents: []
+    });
+
+    const formValidationReducer = (payload, action) => {
+        switch (action) {
+            case 'IS_SENT': {
+                setFormValidation({ ...formValidation, isSent: payload });
+            } break;
+            case 'FORM_COMPONENT': {
+                let { index, type, isTrue } = payload;
+
+                let newFormComponents = formValidation.formComponents;
+                if (!newFormComponents[index]) {
+                    newFormComponents[index] = {};
+                }
+                newFormComponents[index][type] = isTrue;
+
+                setFormValidation({ ...formValidation, formComponents: newFormComponents });
+            } break;
+        }
+    }
 
     const flightCriteriaReducer = (payload, action) => {
         switch (action) {
@@ -39,7 +62,9 @@ export const SearchFormState = ({ children }) => {
 
     const searchFormState = {
         flightCriteria,
-        flightCriteriaReducer
+        flightCriteriaReducer,
+        formValidation,
+        formValidationReducer
     };
 
     return (
