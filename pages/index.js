@@ -1,17 +1,19 @@
 import styles from '../styles/Home.module.css';
 import SearchForm from '../components/searchForm/SearchForm';
-import { SearchFormState } from '../contexts/searchFormState';
+import Footer from '../components/footer/Footer';
+
 
 export default function Home() {
-	const flights = [];
 
 	return (
-		<div className={styles.image}>
-			<div className={styles.searchForm}>
-				<SearchFormState>
+		<>
+			<div className={styles.image}>
+				<div className={styles.searchForm}>
 					<SearchForm />
-				</SearchFormState>
+				</div>
 			</div>
-		</div>
+			<Footer />
+		</>
+
 	)
 }

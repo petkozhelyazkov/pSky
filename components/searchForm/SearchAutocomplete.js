@@ -1,7 +1,7 @@
 import styles from './SearchAutocomplete.module.css';
 import { FormGroup } from 'react-bootstrap';
 import { TextField, Autocomplete } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { SearchFormContext } from '../../contexts/searchFormState';
 import { useLazyEffect } from '../../hooks';
 
@@ -11,11 +11,7 @@ export default function SearchAutocomplete({
     index,
 }) {
     const { flightCriteria, flightCriteriaReducer, formValidation, formValidationReducer } = useContext(SearchFormContext);
-    const [defaultValue, setDefaultValue] = useState(
-        flightCriteria.flights[index]
-            ? flightCriteria.flights[index][`${type}AutocompleteValue`]
-            : ''
-    );
+    const [defaultValue, setDefaultValue] = useState('');
     const [error, setError] = useState({
         isError: false,
         msg: 'Моля попълнете полето!'
@@ -23,6 +19,12 @@ export default function SearchAutocomplete({
     const [destinations, setDestinations] = useState(['']);
     const [value, setValue] = useState('');
 
+    useEffect(() => {
+        if (!flightCriteria.flights[index]) return;
+
+        setDefaultValue(flightCriteria.flights[index][`${type}AutocompleteValue`])
+        setValue(flightCriteria.flights[index][`${type}AutocompleteValue`]);
+    }, [flightCriteria]);
 
     useLazyEffect(() => {
         if (!value) {
@@ -70,6 +72,7 @@ export default function SearchAutocomplete({
             }
             newFlights[index][type] = iataCode;
             newFlights[index][`${type}AutocompleteValue`] = value;
+            setError({ ...error, isError: false });
         }
 
         flightCriteriaReducer(newFlights, 'FLIGHTS');
@@ -81,8 +84,8 @@ export default function SearchAutocomplete({
             <FormGroup className={styles.autocomplete}>
                 <Autocomplete onChange={onDestinationSelect} size='small' type="text"
                     options={destinations}
-                    defaultValue={defaultValue}
-                    isOptionEqualToValue={(option, value) => option.value === value.value}
+                    value={defaultValue || ''}
+                    isOptionEqualToValue={(option, value) => option === option}
                     renderInput={(params) => <TextField
                         error={error.isError}
                         helperText={error.isError ? error.msg : ''}
@@ -90,7 +93,7 @@ export default function SearchAutocomplete({
                             style:
                             {
                                 margin: '-4px 0px 0px 5px',
-                                height: '0px'
+                                height: '0px',
                             }
                         }}
                         onChange={onSearch} {...params} label={label}

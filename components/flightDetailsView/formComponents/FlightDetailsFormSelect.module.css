@@ -1,0 +1,53 @@
+.formInput {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.formInput label {
+    float: left;
+    padding-top: 5px;
+}
+
+.formInput div {
+    float: right;
+}
+
+
+.input {
+    width: 60%;
+    display: inline-block;
+}
+
+.input select {
+    float: left;
+    height: 40px;
+    border-radius: 3px;
+    padding: 2px;
+    border-width: 1px;
+    border-color: rgb(188, 213, 245);
+    outline: none;
+    border-style: solid;
+    width: 90px;
+    margin-right: 8px;
+}
+
+
+.input .dateInput {
+    float: left;
+}
+
+.input .dateInput .bigSelect {
+    width: 200px;
+}
+
+.error select {
+    background-color: rgb(254, 245, 247);
+    border-color: rgb(218, 76, 75);
+}
+
+.errorMsg {
+    color: rgb(226, 90, 110);
+    font-size: 13px;
+    margin-top: 0.5px;
+    margin-bottom: -10px;
+}

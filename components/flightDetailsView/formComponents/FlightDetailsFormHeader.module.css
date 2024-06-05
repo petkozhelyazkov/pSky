@@ -1,0 +1,34 @@
+.label {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.subLabel {
+    width: 80px;
+    font-size: 14px;
+    color: gray;
+    margin-right: 30px;
+    padding-top: 3px;
+}
+
+.line {
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.327);
+    height: 1px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.passengerSelect {
+    border-color: white;
+    outline: none;
+    color: rgb(7, 117, 226);
+}
+
+.passengerSelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}

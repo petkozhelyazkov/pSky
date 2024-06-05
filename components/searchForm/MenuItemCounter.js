@@ -24,6 +24,8 @@ export default function MenuItemCounter({
 
     function onSubtract() {
         if (value == 0) return;
+        if (value == 1 && name == 'adult') return;
+
         setValue(value - 1);
 
         let passengers = { ...flightCriteria.passengers };

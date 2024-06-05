@@ -14,13 +14,13 @@ import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useRouter } from 'next/router';
-import { UserContext } from '../../contexts/userState';
+import { AuthContext } from '../../contexts/authState';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const router = useRouter();
-    const { user, userReducer } = useContext(UserContext);
+    const { userAuth, userAuthReducer } = useContext(AuthContext);
 
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
@@ -38,7 +38,7 @@ export default function AccountMenu() {
             case 'Данни за контакт': router.push('/user/settings', 'user_data'); break;
             case 'Данни за платеца': router.push('/user/settings', 'payment_data'); break;
             case 'Настройки': router.push('/user/settings'); break;
-            case 'Изход': userReducer({}, 'LOGOUT'); router.push('/'); break;
+            case 'Изход': router.pathname.includes('/user/') && router.push('/'); userAuthReducer({}, 'LOGOUT'); break;
         }
     }
 
@@ -56,7 +56,7 @@ export default function AccountMenu() {
                     >
                         <div style={{ color: 'white', display: 'flex', gap: '8px' }}>
                             <AccountCircleIcon />
-                            <span>{user.email}</span>
+                            <span>{userAuth.email}</span>
                         </div>
                     </IconButton>
                 </Tooltip>
@@ -96,12 +96,12 @@ export default function AccountMenu() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={onSelect}>
+                {/* <MenuItem onClick={onSelect}>
                     <ListItemIcon>
                         <BusinessCenterIcon fontSize='small' />
                     </ListItemIcon>
                     Мойте резервации
-                </MenuItem>
+                </MenuItem> */}
                 <MenuItem onClick={onSelect}>
                     <ListItemIcon>
                         <PeopleIcon fontSize="small" />

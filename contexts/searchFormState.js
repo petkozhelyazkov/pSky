@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const SearchFormContext = createContext();
 
@@ -6,6 +6,7 @@ export const SearchFormState = ({ children }) => {
     const [flightCriteria, setFlightCriteria] = useState({
         passengers: {
             adult: 1,
+            young: 0,
             child: 0,
             seated_infant: 0,
             sum: 1
@@ -13,13 +14,28 @@ export const SearchFormState = ({ children }) => {
         type: 'twoway',
         class: 'economy',
         flights: [
-            {}
+            {
+                // originLocationCode: "VAR",
+                // originLocationCodeAutocompleteValue: "Варна, България, Летище Варна, (VAR)"
+            }
         ]
     });
     const [formValidation, setFormValidation] = useState({
         isSent: false,
         formComponents: []
     });
+
+    useEffect(() => {
+        if (sessionStorage.getItem('SearchFormState')) {
+            setFlightCriteria(JSON.parse(sessionStorage.getItem('SearchFormState')));
+        } else {
+            sessionStorage.setItem('SearchFormState', JSON.stringify(flightCriteria));
+        }
+    }, []);
+
+    useEffect(() => {
+        sessionStorage.setItem('SearchFormState', JSON.stringify(flightCriteria));
+    }, [flightCriteria]);
 
     const formValidationReducer = (payload, action) => {
         switch (action) {
@@ -56,7 +72,7 @@ export const SearchFormState = ({ children }) => {
             } break;
             case 'FLIGHTS/TYPE': {
                 setFlightCriteria({ ...flightCriteria, flights: payload.flights, type: payload.type });
-            }
+            } break;
         }
     }
 

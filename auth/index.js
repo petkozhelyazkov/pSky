@@ -1,16 +1,17 @@
 import { app } from '../firebase';
+import { initializeFirestore } from 'firebase/firestore';
 import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut,
     signInWithPopup,
     GoogleAuthProvider,
     FacebookAuthProvider,
-    deleteUser
+    deleteUser,
 } from "firebase/auth";
 
 export const auth = getAuth(app);
+export const db = initializeFirestore(app, { cacheSizeBytes: 1048576 });
 
 const facebookProvider = new FacebookAuthProvider();
 facebookProvider.setCustomParameters({
@@ -27,48 +28,33 @@ const providers = {
 
 export function login(provider, email, password) {
     if (provider == 'EMAIL') {
-        signInWithEmailAndPassword(auth, email, password)
+        return signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 return user;
-            }).catch((error) => {
-                console.log(error);
             });
     } else {
         signInWithPopup(auth, providers[provider])
             .then((result) => {
                 const user = result.user;
                 return user;
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+            });
     }
 }
 
-export function logout() {
-    signOut(auth).then(() => {
-
-    }).catch((error) => {
-        console.log(error);
-    });
-}
-
-export function remove() {
-    deleteUser(user).then(() => {
-    }).catch((error) => {
-        console.log(error);
-    });
+export function remove(user) {
+    deleteUser(user)
+        .then(() => { })
+        .catch(x => {
+            return x;
+        })
 }
 
 export function register(email, password) {
-    createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             let user = userCredential.user;
             return user;
         })
-        .catch((error) => {
-            console.log(error);
-        });
 }
 

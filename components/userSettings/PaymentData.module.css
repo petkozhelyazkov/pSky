@@ -1,0 +1,151 @@
+.wrapper {
+    padding-left: 20px;
+}
+
+.box {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 640px;
+    width: fit-content;
+    max-width: 650px;
+}
+
+.header {
+    display: flex;
+    font-weight: 700;
+    font-size: 17px;
+    gap: 463px;
+}
+
+.header span {
+    color: rgb(0, 157, 255);
+    cursor: pointer;
+}
+
+.labelWrapper {
+    display: flex;
+    background-color: rgb(246, 247, 248);
+    height: 50px;
+    width: 200px;
+    padding: 13px;
+    border-radius: 5px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.label {
+    line-height: 1px;
+}
+
+.label p {
+    font-size: 11px;
+    color: rgb(102, 128, 146);
+}
+
+.label span {
+    font-size: 14px;
+    color: rgb(61, 77, 89);
+}
+
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 700px;
+    margin-right: 700px;
+}
+
+.modal {
+    width: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+.modalHeader {
+    padding: 10px;
+}
+
+.modalHeader p {
+    font-size: 14px;
+}
+
+.modalContent {
+    padding: 20px;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-style: solid;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: rgba(0, 0, 0, 0.148);
+}
+
+.modalContent input {
+    margin-bottom: 30px;
+    width: 400px;
+}
+
+.modalContent select {
+    margin-bottom: 30px;
+    width: 208px;
+    height: 30px;
+}
+
+.modalContent label {
+    width: 500px;
+}
+
+.inputLabel {
+    display: flex;
+}
+
+.buttons {
+    display: flex;
+    padding: 20px;
+    background-color: white;
+    justify-content: center;
+    gap: 30px;
+}
+
+.buttons .back {
+    color: rgb(7, 117, 226);
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 3px;
+    border-color: white;
+    border-style: solid;
+}
+
+.buttons .back:hover {
+    color: rgb(7, 117, 226);
+    background-color: rgba(7, 116, 226, 0.191);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 3px;
+    border-color: rgba(7, 116, 226, 0.016);
+    border-style: solid;
+}
+
+.buttons .save {
+    color: white;
+    background-color: rgb(7, 117, 226);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 3px;
+    border-color: rgb(7, 117, 226);
+    border-style: solid;
+}

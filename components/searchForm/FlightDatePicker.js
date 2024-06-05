@@ -3,7 +3,7 @@ import moment from 'moment';
 import { TextField } from '@mui/material';
 import { FormGroup } from 'react-bootstrap';
 import { DatePicker } from '@mui/lab';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { SearchFormContext } from '../../contexts/searchFormState';
 import { useLazyEffect } from '../../hooks';
 
@@ -13,18 +13,28 @@ export default function FlightDatePicker({
     index
 }) {
     const { flightCriteria, flightCriteriaReducer, formValidation, formValidationReducer } = useContext(SearchFormContext);
-    const [date, setDate] = useState(
-        flightCriteria.flights[index]
-            ? flightCriteria.flights[index][type]
-            : null
-    );
+    const [date, setDate] = useState('');
     const [error, setError] = useState({
         isError: false,
         msg: 'Моля попълнете полето!'
     });
     const [value, setValue] = useState('');
 
+    useEffect(() => {
+        if (!flightCriteria.flights[index]) return;
+
+        setDate(flightCriteria.flights[index][type])
+        setValue(flightCriteria.flights[index][type]);
+    }, [flightCriteria]);
+
     useLazyEffect(() => {
+        if ((flightCriteria.type != 'twoway' && type == 'comingDate')) {
+            setError({ ...error, isError: false });
+            formValidationReducer({ index, type, isTrue: true }, 'FORM_COMPONENT');
+
+            return;
+        }
+
         if (!value) {
             setError({ ...error, isError: true });
             formValidationReducer({ index, type, isTrue: false }, 'FORM_COMPONENT');
@@ -48,6 +58,7 @@ export default function FlightDatePicker({
                 newFlights[index] = {};
             }
             newFlights[index][type] = isoDate;
+            setError({ ...error, isError: false });
         }
 
         flightCriteriaReducer(newFlights, 'FLIGHTS');
@@ -57,12 +68,11 @@ export default function FlightDatePicker({
     return (
         <FormGroup className={styles.datePicker}>
             <DatePicker
-                disabled={flightCriteria.type != 'twoway' && type == 'coming'}
+                disabled={flightCriteria.type != 'twoway' && type == 'comingDate'}
                 inputFormat="DD-MM-YYYY"
                 disableMaskedInput={true}
                 value={date || null}
                 onChange={onDateChange}
-                error={Boolean(error)}
                 renderInput={props => {
                     return <TextField
                         error={error.isError}

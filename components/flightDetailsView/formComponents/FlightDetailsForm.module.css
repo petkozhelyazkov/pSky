@@ -1,0 +1,11 @@
+.formWrapper {
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.inputsWrapper {
+    display: flex;
+    flex-direction: column;
+}

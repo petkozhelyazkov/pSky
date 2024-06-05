@@ -1,0 +1,133 @@
+.detailsWrapper {
+    display: block;
+    justify-content: center;
+    border-style: solid;
+    border-color: rgba(128, 128, 128, 0.023);
+    border-width: 2px;
+    border-style: solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-bottom: -30px;
+}
+
+.carrierImg {
+    margin-top: -20px;
+}
+
+.airportIataCodes {
+    display: flex;
+    margin-top: 5px;
+    gap: 5px;
+}
+
+.line {
+    height: 1px;
+    width: 100px;
+    background-color: gray;
+    margin-top: 10px;
+}
+
+.flightType {
+    width: 34%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    width: 840px;
+    background-color: white;
+    padding: 15px;
+}
+
+.border {
+    display: flex;
+    gap: 40px;
+    border-color: rgba(128, 128, 128, 0.281);
+    border-width: 1px;
+    border-style: solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 100%;
+}
+
+.flightInfo {
+    display: flex;
+}
+
+.airports {
+    display: flex;
+    gap: 40px;
+}
+
+.flightInfo p {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.flightInfo span {
+    margin-top: 9px;
+    margin-left: 10px;
+    color: gray;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+}
+
+.detailsButton {
+    border-width: 1px;
+    border-color: rgb(7, 117, 226);
+    background-color: white;
+    color: rgb(7, 117, 226);
+    font-weight: 600;
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+}
+
+.detailsButton:hover {
+    background-color: rgb(7, 117, 226);
+    color: white;
+    cursor: pointer;
+}
+
+.modalWrapper {
+    width: fit-content;
+    margin: auto;
+    margin-top: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: white;
+    width: fit-content;
+    height: 30%;
+}
+
+.header {
+    padding: 20px;
+}
+
+.detailsTime {
+    background-color: rgb(234, 235, 238);
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.detailsDetails {
+    padding: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');

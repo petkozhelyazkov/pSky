@@ -50,7 +50,7 @@ export default function FightOptions() {
                             <ArrowForwardIcon className={styles.topArrow} />
                         </div>
                     }
-                    <SearchAutocomplete index={i} type='originDestinationCode' label='До:' />
+                    <SearchAutocomplete index={i} type='destinationLocationCode' label='До:' />
                     <FlightDatePicker index={i} flightType='twoway' label='Отиване:' type='goingDate' />
                     <FlightDatePicker index={i} flightType={flightCriteria.type} label='Връщане:' type='comingDate' />
                     {i > 1 &&

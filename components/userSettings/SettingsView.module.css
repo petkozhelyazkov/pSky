@@ -1,0 +1,90 @@
+.wrapper {
+    margin-left: 20px;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: 100px;
+    padding: 25px;
+    gap: 150px;
+}
+
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.modal {
+    background-color: white;
+    width: 1000px;
+}
+
+.header {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    border-bottom: 1px;
+    border-color: rgba(0, 0, 0, 0.254);
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-style: solid;
+    padding-left: 30px;
+    gap: 715px;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.content {
+    height: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+}
+
+.desciption {
+    padding-top: 15px;
+    padding-bottom: 1px;
+    text-align: center;
+    background-color: rgb(234, 242, 252);
+    color: rgb(143, 153, 172);
+    border-radius: 7px;
+}
+
+.deleteButtonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.deleteButton {
+    background-color: rgb(219, 56, 56);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.delete {
+    color: rgb(219, 56, 56);
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600
+}
+
+.delete:hover {
+    text-decoration: none;
+    color: rgb(219, 56, 56);
+}

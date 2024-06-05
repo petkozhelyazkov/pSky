@@ -1,0 +1,30 @@
+.loginWrapper {
+    border-radius: 3px;
+    display: inline-block;
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+.loginWrapper span {
+    float: left;
+    text-align: center;
+    padding-top: 6px;
+}
+
+.loginWrapper button {
+    float: right;
+    border-width: 1px;
+    border-color: rgb(7, 117, 226);
+    background-color: rgb(7, 117, 226);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}

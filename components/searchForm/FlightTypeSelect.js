@@ -1,10 +1,14 @@
 import { RadioGroup, FormControlLabel, Radio } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { SearchFormContext } from '../../contexts/searchFormState';
 
 export default function SelectFlightType() {
     const { flightCriteria, flightCriteriaReducer } = useContext(SearchFormContext);
-    const [defaultType, setDefaultType] = useState(flightCriteria.type);
+    const [defaultType, setDefaultType] = useState('');
+
+    useEffect(() => {
+        setDefaultType(flightCriteria.type);
+    }, [flightCriteria]);
 
     function onFlightTypeChanage(e) {
         let type = e.target.value;
@@ -20,7 +24,7 @@ export default function SelectFlightType() {
     }
 
     return (
-        <RadioGroup onChange={onFlightTypeChanage} defaultValue={defaultType} name='type' row>
+        <RadioGroup onChange={onFlightTypeChanage} value={defaultType} name='type' row>
             <FormControlLabel control={<Radio value="twoway" id='twoway' />} label="Двупосочен" />
             <FormControlLabel control={<Radio value="oneway" id='oneway' />} label="Еднопосочен" />
             <FormControlLabel control={<Radio value="multi" id='multi' />} label="Полет с много отсечки" />

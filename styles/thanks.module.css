@@ -1,0 +1,22 @@
+.nav {
+    height: 60px;
+    background-color: rgb(36, 36, 102);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.backButton {
+    cursor: pointer;
+    color: rgb(7, 132, 232);
+    font-weight: 600;
+}
+
+.backButton:hover {
+    text-decoration: underline;
+}

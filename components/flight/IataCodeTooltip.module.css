@@ -1,0 +1,14 @@
+.tooltipLabel {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.iataCode {
+    font-size: 25px;
+    font-weight: lighter;
+    font-family: 'Lato', sans-serif;
+    color: rgb(26, 39, 74);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');

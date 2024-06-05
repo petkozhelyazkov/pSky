@@ -1,6 +1,5 @@
-import { Client, Entity, Schema } from 'redis-om';
-const REDIS_URL = "redis://default:rKB4z1VRiFwqo0TFcHloACiAA483vwxz@redis-15561.c243.eu-west-1-3.ec2.cloud.redislabs.com:15561";
-//TODO:MOVE TO .env.local
+import { Client, Entity, Repository, Schema } from 'redis-om';
+const REDIS_URL = process.env.REDIS_URL;
 
 const client = new Client();
 
@@ -9,16 +8,17 @@ async function connect() {
         await client.open(REDIS_URL);
     }
 }
+connect()
 
-class iataCode extends Entity { }
+class Airport extends Entity { }
 
 let schema = new Schema(
-    iataCode,
+    Airport,
     {
-        "iataCode": { type: 'string' },
-        "airportEn": { type: 'text', textSearch: true },
+        "iata": { type: 'string' },
+        "nameEn": { type: 'text', textSearch: true },
         "locationEn": { type: 'text', textSearch: true },
-        "airportBg": { type: 'text', textSearch: true },
+        "nameBg": { type: 'text', textSearch: true },
         "locationBg": { type: 'text', textSearch: true },
     },
     {
@@ -26,21 +26,29 @@ let schema = new Schema(
     }
 );
 
+
 async function search(q) {
     if (!q) return;
 
-    await connect();
+
     const repo = client.fetchRepository(schema);
 
     const airports = await repo.search()
-        .where('iataCode').eq(q)
-        .or('airportEn').matches(q)
+        .where('iata').eq(q)
+        .or('nameEn').matches(q)
         .or('locationEn').matches(q)
-        .or('airportBg').matches(q)
+        .or('nameBg').matches(q)
         .or('locationBg').matches(q)
         .return.all();
 
     return airports
+}
+
+export async function createIndex() {
+    await connect()
+
+    const repo = new Repository(schema, client);
+    await repo.createIndex()
 }
 
 export default async function handler(req, res) {
@@ -53,7 +61,7 @@ export default async function handler(req, res) {
             a.forEach(x => {
                 let a = x.entityData;
 
-                data.push({ name: a.airportBg, address: a.locationBg, iataCode: a.iataCode, nameEn: a.airportEn, addressEn: a.locationEn });
+                data.push({ name: a.nameBg, address: a.locationBg, iataCode: a.iata, nameEn: a.nameEn, addressEn: a.locationEn });
             });
 
             res.json(data);

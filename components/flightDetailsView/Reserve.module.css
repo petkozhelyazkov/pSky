@@ -1,0 +1,27 @@
+.reserveWrapper {
+    width: 80%;
+    background-color: white;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 40px;
+    margin: auto;
+}
+
+.reserveWrapper button {
+    background-color: rgb(226, 7, 106);
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 3px;
+    border-style: none;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.reserveWrapper button:hover {
+    background-color: rgba(226, 7, 106, 0.707);
+}

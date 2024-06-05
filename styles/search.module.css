@@ -1,0 +1,28 @@
+.flightSearch {
+    background-color: rgb(36, 36, 102);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    height: fit-content;
+}
+
+.flightOffers {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.searchPageWrapper {
+    background-color: rgb(215, 216, 220);
+    height: 100%;
+    width: 100%;
+}
+
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    color: white;
+}

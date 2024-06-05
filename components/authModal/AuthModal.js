@@ -1,16 +1,16 @@
 import styles from './AuthModal.module.css';
 import { Modal } from '@mui/material';
-import SignIn from './Signin';
+import SignIn from './SignIn';
 import { useContext } from 'react';
-import { ModalContext } from '../../../context/modalState';
+import { AuthModalContext } from '../../contexts/authModalState';
 
 export default function AuthModal() {
-    const handleClose = () => modalReducer(false);
-    const { modal, modalReducer } = useContext(ModalContext);
+    const handleClose = () => authModalReducer(false);
+    const { authModal, authModalReducer } = useContext(AuthModalContext);
 
     return (
         <Modal
-            open={modal}
+            open={authModal}
             onClose={handleClose}
         >
             <div className={styles.modalWrapper}>

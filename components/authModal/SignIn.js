@@ -1,4 +1,4 @@
-import styles from '../modal/AuthModal.module.css';
+import styles from './AuthModal.module.css';
 import { useState, useContext } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,31 +12,109 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import { UserContext } from '../../../context/userState';
+import { AuthContext } from '../../contexts/authState';
 
 export default function SignIn() {
+    const { userAuthReducer } = useContext(AuthContext);
     const [isRegister, setIsRegister] = useState(false);
-    const { userReducer } = useContext(UserContext);
+    const [validation, setValidation] = useState({
+        email: {
+            isError: false,
+            msg: ''
+        },
+        password: {
+            isError: false,
+            msg: ''
+        },
+        rePassword: {
+            isError: false,
+            msg: ''
+        },
+    });
 
-    const onFormSubmit = (e) => {
+    const onFormSubmit = async (e) => {
         e.preventDefault();
-        const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
 
-        if (isRegister) {
-            userReducer({ email, password, provider: 'EMAIL' }, 'REGISTER');
-        } else {
-            userReducer({ email, password, provider: 'EMAIL' }, 'LOGIN');
+        try {
+            const { email, password, rePassword } = Object.fromEntries(new FormData(e.currentTarget));
+
+            if (isRegister) {
+                if (password != rePassword) {
+                    setValidation({
+                        email: { isError: false, msg: '' },
+                        rePassword: { isError: true, msg: 'Паролите не съвпадат!' },
+                        password: { isError: false, msg: '' }
+                    })
+
+                    return;
+                }
+            } else {
+                setValidation({
+                    email: { isError: false, msg: '' },
+                    rePassword: { isError: false, msg: '' },
+                    password: { isError: false, msg: '' }
+                })
+            }
+
+            if (isRegister) {
+                await userAuthReducer({ email, password, provider: 'EMAIL' }, 'REGISTER');
+            } else {
+                await userAuthReducer({ email, password, provider: 'EMAIL' }, 'LOGIN');
+            }
+        } catch (x) {
+            let err = x.message.substring(x.message.indexOf('/') + 1, x.message.length - 2);
+
+            switch (err) {
+                case 'invalid-email':
+                    setValidation({
+                        password: { isError: false, msg: '' },
+                        rePassword: { isError: false, msg: '' },
+                        email: { isError: true, msg: 'Невалиден имейл!' }
+                    }); break;
+                case 'user-not-found':
+                    setValidation({
+                        password: { isError: false, msg: '' },
+                        rePassword: { isError: false, msg: '' },
+                        email: { isError: true, msg: 'Няма потребител с този имейл!' }
+                    }); break;
+                case 'email-already-in-use':
+                    setValidation({
+                        email: { isError: true, msg: 'Моля изберете друг имейл!' },
+                        rePassword: { isError: false, msg: '' },
+                        password: { isError: false, msg: '' }
+                    }); break;
+                case 'too-many-requests':
+                    setValidation({ ...validation, email: { isError: true, msg: 'Моля изчакайте няколко минути и опитайте пак!' } }); break;
+                case 'internal-error':
+                    setValidation({
+                        email: { isError: false, msg: '' },
+                        rePassword: { isError: false, msg: '' },
+                        password: { isError: true, msg: 'Моля въведете парола!' }
+                    }); break;
+                case 'wrong-password':
+                    setValidation({
+                        email: { isError: false, msg: '' },
+                        rePassword: { isError: false, msg: '' },
+                        password: { isError: true, msg: 'Грешна парола!' }
+                    }); break;
+                case 'weak-password':
+                    setValidation({
+                        email: { isError: false, msg: '' },
+                        rePassword: { isError: false, msg: '' },
+                        password: { isError: true, msg: 'Паролата трябва да е поне 6 символа!' }
+                    }); break;
+            }
         }
     };
 
     const onGoogleLogin = (e) => {
         e.preventDefault();
-        userReducer({ email: '', password: '', provider: 'GOOGLE' }, 'LOGIN');
+        userAuthReducer({ email: '', password: '', provider: 'GOOGLE' }, 'LOGIN');
     }
 
     const onFacebookLogin = (e) => {
         e.preventDefault();
-        userReducer({ email: '', password: '', provider: 'FACEBOOK' }, 'LOGIN');
+        userAuthReducer({ email: '', password: '', provider: 'FACEBOOK' }, 'LOGIN');
     }
 
     const onFormChange = (e) => {
@@ -63,6 +141,8 @@ export default function SignIn() {
                 </Typography>
                 <Box component="form" method='post' onSubmit={onFormSubmit} noValidate sx={{ mt: 1 }}>
                     <TextField
+                        error={validation.email.isError}
+                        helperText={validation.email.isError ? validation.email.msg : ''}
                         margin="normal"
                         required
                         fullWidth
@@ -72,6 +152,8 @@ export default function SignIn() {
                         autoFocus
                     />
                     <TextField
+                        error={validation.password.isError}
+                        helperText={validation.password.isError ? validation.password.msg : ''}
                         margin="normal"
                         required
                         fullWidth
@@ -81,6 +163,8 @@ export default function SignIn() {
                         autoComplete="current-password"
                     />
                     {isRegister && <TextField
+                        error={validation.rePassword.isError}
+                        helperText={validation.rePassword.isError ? validation.rePassword.msg : ''}
                         margin="normal"
                         required
                         fullWidth
@@ -108,7 +192,10 @@ export default function SignIn() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Вход
+                        {isRegister
+                            ? "Регистрация"
+                            : "Вход"
+                        }
                     </Button>
                     <Grid container>
                         <div className={styles.center}>

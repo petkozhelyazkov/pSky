@@ -1,0 +1,70 @@
+.flightInfo {
+    margin: auto 0 auto 0;
+}
+
+.flightWrapper {
+    display: flex;
+    background-color: white;
+    border-style: solid;
+    border-color: white;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    height: fit-content;
+}
+
+.detailsWrapper {
+    border-right: 1px;
+    border-left: 0px;
+    border-bottom: 0px;
+    border-top: 0px;
+    display: flex;
+    border-style: solid;
+    border-color: rgb(215, 212, 212);
+    width: 800px;
+    gap: 200px;
+    justify-content: center;
+}
+
+.multipleDetailsWrapper {
+    border-right: 1px;
+    border-left: 0px;
+    border-bottom: 0px;
+    border-top: 1px;
+    display: flex;
+    border-style: solid;
+    border-color: rgb(215, 212, 212);
+    width: 800px;
+    gap: 200px;
+    justify-content: center;
+}
+
+.sectionWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 700
+}
+
+.smallText {
+    font-size: 11px
+}
+
+.chooseButton {
+    background-color: rgb(226, 7, 106);
+    border-color: rgb(226, 7, 106);
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    font-weight: 700;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');

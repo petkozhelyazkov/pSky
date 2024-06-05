@@ -1,0 +1,41 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    border-right: 0.5px;
+    border-style: solid;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-width: 0.5px;
+    border-color: rgba(128, 128, 128, 0.457);
+    width: 220px;
+    gap: 20px;
+    margin-bottom: 305px;
+}
+
+.navItem {
+    color: rgb(80, 92, 117);
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+}
+
+.navLinkSelected {
+    color: rgb(80, 92, 117);
+    font-weight: 500;
+}
+
+.navLinkSelected:hover {
+    text-decoration: none;
+    color: rgb(80, 92, 117);
+    font-weight: 500;
+}
+
+.navLink {
+    color: rgb(80, 92, 117);
+}
+
+.navLink:hover {
+    text-decoration: none;
+    color: rgb(80, 92, 117);
+}

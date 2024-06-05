@@ -1,0 +1,41 @@
+.timeWrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+}
+
+.wrapper {
+    display: flex;
+    gap: 70px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.time {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.timeArrow {
+    color: rgb(164, 161, 161);
+}
+
+.timeAttributes {
+    display: flex;
+    color: rgb(164, 161, 161);
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.dayDifference {
+    color: rgb(164, 161, 161);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    font-size: 11px;
+    margin-right: -40px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
