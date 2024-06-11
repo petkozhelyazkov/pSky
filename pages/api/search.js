@@ -1,7 +1,7 @@
 import Amadeus from 'amadeus';
 const amadeus = new Amadeus({
-    clientId: 'gpL2XaI42E2bHVjQX5prAVR39OZ5D7WZ',
-    clientSecret: 'CNeZo3r6AVAhnAg2',
+    clientId: process.env.AMADEUS_API,
+    clientSecret: process.env.AMADEUS_SECRET,
 });
 
 export default async function handler(req, res) {

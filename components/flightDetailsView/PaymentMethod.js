@@ -242,12 +242,12 @@ function CardCard({
 }) {
     return (
         <div onClick={onClick} className={card == name ? styles.selectedCard : styles.card}>
-            <Image style={{ width: '50px' }} src={
+            <img layout='fill' style={{ width: '50px', height: '50px' }} src={
                 name == 'Visa'
-                    ? 'Visa_logo.png'
+                    ? '/Visa_logo.png'
                     : name == 'Master Card'
-                        ? 'MasterCard_Logo.svg.png'
-                        : 'Maestro_logo.png'
+                        ? '/MasterCard_Logo.svg.png'
+                        : '/Maestro_logo.png'
             }
                 alt="" />
             <p className={styles.paymentDescription}>
