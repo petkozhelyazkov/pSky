@@ -7,7 +7,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import Footer from '../components/footer/Footer';
 
 export async function getServerSideProps({ query }) {
-    const res = await fetch('http://localhost:3000/api/search', {
+    const res = await fetch(`${process.env.BASE_URL}/api/search`, {
         method: 'POST',
         'content-type': 'application/json',
         body: query ? query?.flightCriteria : null

@@ -10,7 +10,7 @@ export default function AuthGurad({ children }) {
         if (!userAuth.uid) {
             router.push('/');
         }
-    }, []);
+    }, [userAuth.uid]);
 
     return children;
 }

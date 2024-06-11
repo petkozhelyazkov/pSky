@@ -21,7 +21,7 @@ export default function Airports({
     return (
         <div className={styles.displayInfoWrapper}>
             <div className={styles.airlineImg}>
-                <img src={`http://pics.avs.io/70/70/${carrierCode}.png`} />
+                <img src={`http://pics.avs.io/70/70/${carrierCode}.png`} alt='' />
             </div>
             <div className={styles.airports}>
                 <IataCodeTooltip label='Излитане' iataCode={departureAirportIata} />
