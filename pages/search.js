@@ -12,9 +12,8 @@ export async function getServerSideProps({ query }) {
         'content-type': 'application/json',
         body: query ? query?.flightCriteria : null
     })
-        .then(x => { x.json(); console.log(x.json) })
+        .then(x => x.json())
         .catch(err => console.log(err))
-
 
 
     return (

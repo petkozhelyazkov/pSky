@@ -34,7 +34,6 @@ export default function SearchForm() {
 
             if (isReady) {
                 setLoader(true);
-                console.log('ok!');
                 router.push({
                     pathname: '/search',
                     query: { flightCriteria: JSON.stringify(flightCriteria) }
