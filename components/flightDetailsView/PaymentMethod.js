@@ -8,6 +8,7 @@ import FlightDetailsFormSelectGroup from './formComponents/FlightDetailsFormSele
 import FlightDetailsFormSelect from './formComponents/FlightDetailsFormSelect';
 import { ReserveContext } from '../../contexts/reserveState';
 import { useLazyEffect } from '../../hooks';
+import Image from 'next/image';
 
 export default function PaymentMethod() {
     const { reserveReducer, formValidation, formValidationReducer } = useContext(ReserveContext);
@@ -241,7 +242,7 @@ function CardCard({
 }) {
     return (
         <div onClick={onClick} className={card == name ? styles.selectedCard : styles.card}>
-            <img style={{ width: '50px' }} src={
+            <Image style={{ width: '50px' }} src={
                 name == 'Visa'
                     ? 'Visa_logo.png'
                     : name == 'Master Card'

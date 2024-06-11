@@ -6,6 +6,7 @@ import Times from '../flight/Times';
 import { Modal } from '@mui/material';
 import { useEffect, useState } from 'react';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import Image from 'next/image';
 
 export default function FlightDetails({
     segment,
@@ -121,7 +122,7 @@ export default function FlightDetails({
                             <span style={{ fontSize: '12.5px' }}>{formatedDepartureDate}</span>
                         </div>
                         <div className={styles.airports}>
-                            <img className={styles.carrierImg} src={`http://pics.avs.io/70/70/${carrierCode}.png`} />
+                            <Image className={styles.carrierImg} src={`http://pics.avs.io/70/70/${carrierCode}.png`} alt='' />
                             <div className={styles.airportIataCodes}>
                                 <IataCodeTooltip label='Излитане' pStyle={{ fontSize: '14px', fontWeight: '700' }} iataCode={departureIataCode} />
                                 <div className={styles.line}></div>

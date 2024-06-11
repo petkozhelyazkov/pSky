@@ -3,6 +3,7 @@ import Footer from '../components/footer/Footer';
 import { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import Image from 'next/image';
 
 export default function About() {
     const [expand, setExpand] = useState(false);
@@ -20,7 +21,7 @@ export default function About() {
             <div className={styles.nav}></div>
             <div className={styles.wrapper}>
                 <h4>ПРОФЕСИОНАЛНА ГИМНАЗИЯ ПО ЕЛЕКТРОТЕХНИКА - ВАРНА</h4>
-                <img src="pge.png" />
+                <Image src="pge.png" alt="" />
                 <br />
                 <h2 style={{ fontWeight: '700' }}>ДИПЛОМНА РАБОТА</h2>
                 <br />
