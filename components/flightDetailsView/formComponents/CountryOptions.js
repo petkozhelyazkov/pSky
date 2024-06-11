@@ -103,7 +103,7 @@ export default function CountryOptions() {
             <option value="Конго">Конго</option>
             <option value="Косово">Косово</option>
             <option value="Коста Рика">Коста Рика</option>
-            <option value="Кот дИвоар/ Бряг на слоновата кост">Кот д'Ивоар/ Бряг на слоновата кост</option>
+            <option value="Кот дИвоар/ Бряг на слоновата кост">Кот дИвоар/ Бряг на слоновата кост</option>
             <option value="Куба">Куба</option >
             <option value="Кувейт">Кувейт</option>
             <option value="Кюрасао">Кюрасао</option>
