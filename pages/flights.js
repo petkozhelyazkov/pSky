@@ -22,7 +22,7 @@ export function getServerSideProps({ query }) {
     }
 }
 
-export default function flights({ flight }) {
+export default function Flights({ flight }) {
     const { userAuth } = useContext(AuthContext);
     const { flightCriteria } = useContext(SearchFormContext);
     const { user } = useContext(UserContext);

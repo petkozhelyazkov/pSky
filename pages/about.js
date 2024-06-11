@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-export default function about() {
+export default function About() {
     const [expand, setExpand] = useState(false);
 
     function onExpand(action) {

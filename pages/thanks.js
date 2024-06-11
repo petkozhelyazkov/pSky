@@ -2,7 +2,7 @@ import styles from '../styles/thanks.module.css';
 import Footer from '../components/footer/Footer';
 import { useRouter } from 'next/router';
 
-export default function thanks() {
+export default function Thanks() {
     const router = useRouter();
 
     function onBack() {
